@@ -8,8 +8,13 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types as genai_types
 
-load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env"))
-_api_key = os.getenv("GEMINI_API_KEY", "")
+# Streamlit Cloud는 st.secrets, 로컬은 .env 사용
+try:
+    _api_key = st.secrets["GEMINI_API_KEY"]
+except Exception:
+    load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env"))
+    _api_key = os.getenv("GEMINI_API_KEY", "").strip().strip('"')
+
 _gemini_ok = bool(_api_key and _api_key != "your_gemini_api_key_here")
 if _gemini_ok:
     _genai_client = genai.Client(api_key=_api_key)

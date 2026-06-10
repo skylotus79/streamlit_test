@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 .env
-__pycache__/
-*.pyc
-=======
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -221,4 +218,3 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
->>>>>>> 7b30df6ebc453cfe18fe4424b3249a9179a64af5
